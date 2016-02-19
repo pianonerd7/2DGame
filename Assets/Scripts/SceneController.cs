@@ -150,12 +150,13 @@ public class SceneController : MonoBehaviour
         {
             if (GUI.Button(new Rect((Screen.width/2), (Screen.height / 4) *2, 100, 40), "End Game"))
             {
-                Debug.Log("Do some debugging");
+                Application.Quit();
             }
 
             if (GUI.Button(new Rect((Screen.width/2), (Screen.height/4) * 3, 100, 40), "Start Game"))
             {
-                
+                UIButton button = new UIButton();
+                button.OnMouseUp();
             }
         }
     }
