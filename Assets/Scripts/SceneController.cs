@@ -15,6 +15,9 @@ public class SceneController : MonoBehaviour {
 	private MemoryCard _secondRevealed;
 	private int _score = 0;
 
+    private int totalCards = 8;
+    private int cardsSoFar = 0;
+
 	public bool canReveal {
 		get {return _secondRevealed == null;}
 	}
@@ -76,9 +79,28 @@ public class SceneController : MonoBehaviour {
 
 		// increment score if the cards match
 		if (_firstRevealed.id == _secondRevealed.id) {
+            cardsSoFar += 2;
+
 			_score++;
 			scoreLabel.text = "Score: " + _score;
-		}
+
+            var speed = 10f;
+            
+            int i = 10;
+            while (i > 0)
+            {
+                _firstRevealed.transform.Rotate(0, 0, Mathf.Cos(Time.fixedTime) * speed, Space.World);
+                _secondRevealed.transform.Rotate(0, 0, Mathf.Cos(Time.fixedTime) * speed, Space.World);
+                speed = -speed;
+                yield return new WaitForSeconds(.15f);
+                i--;
+            }
+            
+            if (cardsSoFar == totalCards)
+            {
+                Debug.Log("you win!!!");
+            }
+        }
 
 		// otherwise turn them back over after .5s pause
 		else {
@@ -91,6 +113,7 @@ public class SceneController : MonoBehaviour {
 		_firstRevealed = null;
 		_secondRevealed = null;
 	}
+
 
 	public void Restart() {
 		Application.LoadLevel("Scene");
