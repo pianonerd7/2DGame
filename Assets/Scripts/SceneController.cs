@@ -23,6 +23,7 @@ public class SceneController : MonoBehaviour
 
     private int totalCards = 8;
     private int cardsSoFar = 0;
+    private bool showButton = false;
 
     public bool canReveal
     {
@@ -105,6 +106,7 @@ public class SceneController : MonoBehaviour
             _score++;
             scoreLabel.text = "Score: " + _score;
 
+            /*
             var speed = 10f;
 
             int i = 7;
@@ -116,14 +118,16 @@ public class SceneController : MonoBehaviour
                 yield return new WaitForSeconds(.15f);
                 i--;
             }
-
+            */
             Destroy(_firstRevealed.gameObject);
             Destroy(_secondRevealed.gameObject);
 
             if (cardsSoFar == totalCards)
             {
-                Instantiate(win, new Vector3(0, 0, 0), win.transform.rotation);
-                Debug.Log("you win!!!");
+                //Instantiate(win, new Vector3(0, 0, 0), win.transform.rotation);
+                //yield return new WaitForSeconds(2f);
+                //Destroy(win.gameObject);
+                showButton = true;
             }
         }
 
@@ -140,9 +144,25 @@ public class SceneController : MonoBehaviour
         _secondRevealed = null;
     }
 
+    void OnGUI()
+    {
+        if (showButton)
+        {
+            if (GUI.Button(new Rect((Screen.width/2), (Screen.height / 4) *2, 100, 40), "End Game"))
+            {
+                Debug.Log("Do some debugging");
+            }
+
+            if (GUI.Button(new Rect((Screen.width/2), (Screen.height/4) * 3, 100, 40), "Start Game"))
+            {
+                
+            }
+        }
+    }
+
 
     public void Restart()
     {
-        Application.LoadLevel("Scene");
+        //pplication.LoadLevel("Scene");
     }
 }
