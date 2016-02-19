@@ -16,6 +16,10 @@ public class SceneController : MonoBehaviour
     private TextMesh scoreLabel;
     [SerializeField]
     public GameObject win;
+    [SerializeField]
+    public GameObject endButton;
+    [SerializeField]
+    public GameObject startButton;
 
     private MemoryCard _firstRevealed;
     private MemoryCard _secondRevealed;
@@ -23,7 +27,6 @@ public class SceneController : MonoBehaviour
 
     private int totalCards = 8;
     private int cardsSoFar = 0;
-    private bool showButton = false;
 
     public bool canReveal
     {
@@ -127,7 +130,8 @@ public class SceneController : MonoBehaviour
                 //Instantiate(win, new Vector3(0, 0, 0), win.transform.rotation);
                 //yield return new WaitForSeconds(2f);
                 //Destroy(win.gameObject);
-                showButton = true;
+                Instantiate(startButton, startButton.transform.position, startButton.transform.rotation);
+                Instantiate(endButton, endButton.transform.position, endButton.transform.rotation);
             }
         }
 
@@ -143,24 +147,6 @@ public class SceneController : MonoBehaviour
         _firstRevealed = null;
         _secondRevealed = null;
     }
-
-    void OnGUI()
-    {
-        if (showButton)
-        {
-            if (GUI.Button(new Rect((Screen.width/2), (Screen.height / 4) *2, 100, 40), "End Game"))
-            {
-                Application.Quit();
-            }
-
-            if (GUI.Button(new Rect((Screen.width/2), (Screen.height/4) * 3, 100, 40), "Start Game"))
-            {
-                UIButton button = new UIButton();
-                button.OnMouseUp();
-            }
-        }
-    }
-
 
     public void Restart()
     {
