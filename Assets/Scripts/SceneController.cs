@@ -86,7 +86,7 @@ public class SceneController : MonoBehaviour {
 
             var speed = 10f;
             
-            int i = 10;
+            int i = 7;
             while (i > 0)
             {
                 _firstRevealed.transform.Rotate(0, 0, Mathf.Cos(Time.fixedTime) * speed, Space.World);
@@ -95,6 +95,9 @@ public class SceneController : MonoBehaviour {
                 yield return new WaitForSeconds(.15f);
                 i--;
             }
+
+            Destroy(_firstRevealed.gameObject);
+            Destroy(_secondRevealed.gameObject);
             
             if (cardsSoFar == totalCards)
             {
