@@ -151,6 +151,6 @@ public class SceneController : MonoBehaviour
 
     public void Restart()
     {
-        //pplication.LoadLevel("Scene");
+        Application.LoadLevel("Scene");
     }
 }
