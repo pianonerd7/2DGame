@@ -24,6 +24,7 @@ public class SceneController : MonoBehaviour
     private GameObject winScreen;
     private GameObject endButton;
     private GameObject startButton;
+    public GameObject smoke;
 
     public bool canReveal
     {
@@ -109,7 +110,7 @@ public class SceneController : MonoBehaviour
             _score++;
             scoreLabel.text = "Score: " + _score;
 
-            /*
+            
             var speed = 10f;
 
             int i = 7;
@@ -121,7 +122,15 @@ public class SceneController : MonoBehaviour
                 yield return new WaitForSeconds(.15f);
                 i--;
             }
-            */
+
+            Vector3 firstPosition = _firstRevealed.transform.position;
+            Quaternion firstRotation = _firstRevealed.transform.rotation;
+            Vector3 secondPosition = _secondRevealed.transform.position;
+            Quaternion secondRotation = _secondRevealed.transform.rotation;
+
+            Instantiate(smoke, firstPosition, firstRotation);
+            Instantiate(smoke, secondPosition, secondRotation);
+            yield return new WaitForSeconds(0.5f);
             Destroy(_firstRevealed.gameObject);
             Destroy(_secondRevealed.gameObject);
 
