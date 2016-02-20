@@ -68,7 +68,7 @@ public class SceneController : MonoBehaviour
                 card.transform.position = new Vector3(posX, posY, startPos.z);
             }
         }
-        GameObject winScreen = GameObject.FindGameObjectWithTag("winScreen");
+        winScreen = GameObject.FindGameObjectWithTag("winScreen");
     }
 
     // Knuth shuffle algorithm
@@ -135,10 +135,11 @@ public class SceneController : MonoBehaviour
                 GameObject.DestroyObject(win);
                 */
 
-                winScreen.SetActive(true);
+
+                winScreen.transform.localScale = new Vector3(1, 1, 1);
                 yield return new WaitForSeconds(2f);
-                winScreen.SetActive(false);
-       
+                winScreen.transform.localScale = new Vector3(0, 0, 0);
+                
 
                 Instantiate(startButton, startButton.transform.position, startButton.transform.rotation);
                 Instantiate(endButton, endButton.transform.position, endButton.transform.rotation);
