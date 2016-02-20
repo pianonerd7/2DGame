@@ -5,7 +5,8 @@ public class ExitButton : MonoBehaviour {
 
     public void OnMouseDown()
     {
-        Debug.Log("you pressed");
+        Debug.Log("you pressed exit");
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
-
 }
