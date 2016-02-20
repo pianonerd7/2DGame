@@ -15,8 +15,6 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     private TextMesh scoreLabel;
     [SerializeField]
-    public GameObject win;
-    [SerializeField]
     public GameObject endButton;
     [SerializeField]
     public GameObject startButton;
@@ -27,6 +25,7 @@ public class SceneController : MonoBehaviour
 
     private int totalCards = 8;
     private int cardsSoFar = 0;
+    private GameObject winScreen;
 
     public bool canReveal
     {
@@ -69,6 +68,7 @@ public class SceneController : MonoBehaviour
                 card.transform.position = new Vector3(posX, posY, startPos.z);
             }
         }
+        GameObject winScreen = GameObject.FindGameObjectWithTag("winScreen");
     }
 
     // Knuth shuffle algorithm
@@ -127,9 +127,19 @@ public class SceneController : MonoBehaviour
 
             if (cardsSoFar == totalCards)
             {
-                //Instantiate(win, new Vector3(0, 0, 0), win.transform.rotation);
-                //yield return new WaitForSeconds(2f);
-                //Destroy(win.gameObject);
+                /*
+                Instantiate(win, new Vector3(0, 0, 0), win.transform.rotation);
+                yield return new WaitForSeconds(2f);
+
+                GameObject.DestroyImmediate(win, true);
+                GameObject.DestroyObject(win);
+                */
+
+                winScreen.SetActive(true);
+                yield return new WaitForSeconds(2f);
+                winScreen.SetActive(false);
+       
+
                 Instantiate(startButton, startButton.transform.position, startButton.transform.rotation);
                 Instantiate(endButton, endButton.transform.position, endButton.transform.rotation);
             }
