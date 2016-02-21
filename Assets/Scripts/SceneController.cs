@@ -3,11 +3,6 @@ using System.Collections;
 
 public class SceneController : MonoBehaviour
 {
-    public const int gridRows = 2;
-    public const int gridCols = 4;
-    public const float offsetX = 2f;
-    public const float offsetY = 2.5f;
-
     [SerializeField]
     private MemoryCard originalCard;
     [SerializeField]
@@ -19,8 +14,6 @@ public class SceneController : MonoBehaviour
     private MemoryCard _secondRevealed;
     private int _score = 0;
 
-    private int totalCards = 8;
-    private int cardsSoFar = 0;
     private GameObject winScreen;
     private GameObject endButton;
     private GameObject startButton;
@@ -37,12 +30,11 @@ public class SceneController : MonoBehaviour
         winScreen = GameObject.FindGameObjectWithTag("winScreen");
         endButton = GameObject.FindGameObjectWithTag("endButton");
         startButton = GameObject.FindGameObjectWithTag("startButton");
-
-        instantiate();
     }
 
-    private void instantiate()
+    public void Instantiate()
     {
+        GameObject.FindGameObjectWithTag("originalCard").transform.localScale = new Vector3(1, 1, 1);
         Vector3 startPos = originalCard.transform.position;
 
         // create shuffled list of cards
@@ -50,9 +42,9 @@ public class SceneController : MonoBehaviour
         numbers = ShuffleArray(numbers);
 
         // place cards in a grid
-        for (int i = 0; i < gridCols; i++)
+        for (int i = 0; i < Utility.gridCols; i++)
         {
-            for (int j = 0; j < gridRows; j++)
+            for (int j = 0; j < Utility.gridRows; j++)
             {
                 MemoryCard card;
 
@@ -67,12 +59,12 @@ public class SceneController : MonoBehaviour
                 }
 
                 // next card in the list for each grid space
-                int index = j * gridCols + i;
+                int index = j * Utility.gridCols + i;
                 int id = numbers[index];
                 card.SetCard(id, images[id]);
 
-                float posX = (offsetX * i) + startPos.x;
-                float posY = -(offsetY * j) + startPos.y;
+                float posX = (Utility.offsetX * i) + startPos.x;
+                float posY = -(Utility.offsetY * j) + startPos.y;
                 card.transform.position = new Vector3(posX, posY, startPos.z);
             }
         }
@@ -111,7 +103,7 @@ public class SceneController : MonoBehaviour
         // increment score if the cards match
         if (_firstRevealed.id == _secondRevealed.id)
         {
-            cardsSoFar += 2;
+            Utility.cardsSoFar += 2;
 
             _score++;
             scoreLabel.text = "Score: " + _score;
@@ -140,7 +132,7 @@ public class SceneController : MonoBehaviour
             Destroy(_firstRevealed.gameObject);
             Destroy(_secondRevealed.gameObject);
 
-            if (cardsSoFar == totalCards)
+            if (Utility.cardsSoFar == Utility.totalCards)
             {
                 winScreen.transform.localScale = new Vector3(1, 1, 1);
                 yield return new WaitForSeconds(2f);

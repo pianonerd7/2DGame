@@ -38,8 +38,10 @@ public class Grid24 : MonoBehaviour {
     {
         Debug.Log("on mouse up");
 
-        Utility.rows = 2;
-        Utility.columns = 4;
+        Utility.gridRows = 2;
+        Utility.gridCols = 4;
+        Utility.offsetX = 2f;
+        Utility.offsetY = 2.5f;
 
         transform.localScale = Vector3.one;
         if (targetObject != null)

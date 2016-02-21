@@ -38,8 +38,8 @@ public class Grid25 : MonoBehaviour {
     {
         Debug.Log("on mouse up");
 
-        Utility.rows = 2;
-        Utility.columns = 5;
+        Utility.gridRows = 2;
+        Utility.gridCols = 5;
 
         transform.localScale = Vector3.one;
         if (targetObject != null)

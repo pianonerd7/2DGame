@@ -4,6 +4,10 @@ using System.Collections;
 public class Utility : MonoBehaviour {
 
 
-    public static int rows;
-    public static int columns;
+    public static int gridRows;
+    public static int gridCols;
+    public static float offsetX;
+    public static float offsetY;
+    public static int totalCards;
+    public static int cardsSoFar = 0;
 }
