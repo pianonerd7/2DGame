@@ -8,7 +8,7 @@ public class Grid23 : MonoBehaviour {
     [SerializeField]
     private string targetMessage;
 
-    public Color highlightColor = Color.cyan;
+    public Color highlightColor = Color.blue;
     public void OnMouseEnter()
     {
         Debug.Log("on mouse enter");
@@ -36,6 +36,10 @@ public class Grid23 : MonoBehaviour {
     public void OnMouseUp()
     {
         Debug.Log("on mouse up");
+
+        Utility.rows = 2;
+        Utility.columns = 3;
+
         transform.localScale = Vector3.one;
         if (targetObject != null)
         {

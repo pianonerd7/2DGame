@@ -9,7 +9,7 @@ public class Grid34 : MonoBehaviour {
     [SerializeField]
     private string targetMessage;
 
-    public Color highlightColor = Color.cyan;
+    public Color highlightColor = Color.blue;
     public void OnMouseEnter()
     {
         Debug.Log("on mouse enter");
@@ -37,6 +37,10 @@ public class Grid34 : MonoBehaviour {
     public void OnMouseUp()
     {
         Debug.Log("on mouse up");
+
+        Utility.rows = 3;
+        Utility.columns = 4;
+
         transform.localScale = Vector3.one;
         if (targetObject != null)
         {
