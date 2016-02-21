@@ -46,5 +46,6 @@ public class Grid25 : MonoBehaviour {
         {
             targetObject.SendMessage(targetMessage);
         }
+        GameObject.FindGameObjectWithTag("selectGrid").SetActive(false);
     }
 }

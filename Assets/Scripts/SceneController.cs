@@ -34,6 +34,15 @@ public class SceneController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        winScreen = GameObject.FindGameObjectWithTag("winScreen");
+        endButton = GameObject.FindGameObjectWithTag("endButton");
+        startButton = GameObject.FindGameObjectWithTag("startButton");
+
+        instantiate();
+    }
+
+    private void instantiate()
+    {
         Vector3 startPos = originalCard.transform.position;
 
         // create shuffled list of cards
@@ -67,9 +76,6 @@ public class SceneController : MonoBehaviour
                 card.transform.position = new Vector3(posX, posY, startPos.z);
             }
         }
-        winScreen = GameObject.FindGameObjectWithTag("winScreen");
-        endButton = GameObject.FindGameObjectWithTag("endButton");
-        startButton = GameObject.FindGameObjectWithTag("startButton");
     }
 
     // Knuth shuffle algorithm
