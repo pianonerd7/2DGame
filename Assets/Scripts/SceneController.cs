@@ -34,7 +34,7 @@ public class SceneController : MonoBehaviour
 
     public void Instantiate()
     {
-        GameObject.FindGameObjectWithTag("originalCard").transform.localScale = new Vector3(1, 1, 1);
+        GameObject.FindGameObjectWithTag("originalCard").transform.localScale = Utility.startingScale;
         GameObject.FindGameObjectWithTag("originalCard").transform.position = Utility.startingPos;
         //Vector3 startPos = originalCard.transform.position;
         Vector3 startPos = Utility.startingPos;
@@ -70,6 +70,7 @@ public class SceneController : MonoBehaviour
                 float posX = (Utility.offsetX * i) + startPos.x;
                 float posY = -(Utility.offsetY * j) + startPos.y;
                 card.transform.position = new Vector3(posX, posY, startPos.z);
+               
 
                 cardNum++;
             }

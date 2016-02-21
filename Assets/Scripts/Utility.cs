@@ -13,4 +13,5 @@ public class Utility : MonoBehaviour {
     public static int totalCards;
     public static int cardsSoFar = 0;
     public static Vector3 startingPos;
+    public static Vector3 startingScale = new Vector3(1, 1, 1);
 }
