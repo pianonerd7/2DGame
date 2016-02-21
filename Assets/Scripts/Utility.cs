@@ -12,4 +12,5 @@ public class Utility : MonoBehaviour {
 
     public static int totalCards;
     public static int cardsSoFar = 0;
+    public static Vector3 startingPos;
 }

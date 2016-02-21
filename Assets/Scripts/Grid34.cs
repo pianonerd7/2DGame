@@ -41,7 +41,9 @@ public class Grid34 : MonoBehaviour {
         Utility.gridRows = 3;
         Utility.gridCols = 4;
         Utility.offsetX = 2f;
-        Utility.offsetY = 2.5f;
+        Utility.offsetY = 2.1f;
+        Utility.startingPos = new Vector3(-3, 1.5f, 0);
+        Utility.totalCards = 12;
 
         int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3 , 4, 4, 5, 5};
         Utility.numbers = numbers;

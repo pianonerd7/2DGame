@@ -35,8 +35,9 @@ public class SceneController : MonoBehaviour
     public void Instantiate()
     {
         GameObject.FindGameObjectWithTag("originalCard").transform.localScale = new Vector3(1, 1, 1);
+        GameObject.FindGameObjectWithTag("originalCard").transform.position = Utility.startingPos;
         //Vector3 startPos = originalCard.transform.position;
-        Vector3 startPos = new Vector3(-3, 1, 0);
+        Vector3 startPos = Utility.startingPos;
 
         // create shuffled list of cards
         int[] numbers = Utility.numbers;
