@@ -38,5 +38,6 @@ public class StartButton : MonoBehaviour {
         {
             targetObject.SendMessage(targetMessage);
         }
+        GameObject.FindGameObjectWithTag("selectGrid").transform.localScale = new Vector3(1, 1, 1);
     }
 }

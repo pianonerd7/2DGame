@@ -142,12 +142,16 @@ public class SceneController : MonoBehaviour
 
             if (Utility.cardsSoFar == Utility.totalCards)
             {
+                yield return new WaitForSeconds(1f);
                 winScreen.transform.localScale = new Vector3(1, 1, 1);
                 yield return new WaitForSeconds(2f);
                 winScreen.transform.localScale = new Vector3(0, 0, 0);
 
                 startButton.transform.localScale = new Vector3(1, 1, 1);
                 endButton.transform.localScale = new Vector3(1, 1, 1);
+
+                Utility.cardsSoFar = 0;
+                Utility.used = Utility.numbers;
             }
         }
 

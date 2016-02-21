@@ -48,6 +48,6 @@ public class Grid44 : MonoBehaviour {
         {
             targetObject.SendMessage(targetMessage);
         }
-        GameObject.FindGameObjectWithTag("selectGrid").SetActive(false);
+        GameObject.FindGameObjectWithTag("selectGrid").transform.localScale = Utility.removeScale;
     }
 }

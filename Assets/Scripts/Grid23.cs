@@ -37,17 +37,17 @@ public class Grid23 : MonoBehaviour {
         Utility.offsetX = 3f;
         Utility.offsetY = 2.5f;
         Utility.startingPos = new Vector3(-3, 1, 0);
+        Utility.startingScale = new Vector3(1, 1, 1);
         Utility.totalCards = 6;
 
         Utility.numbers = Utility.GetNewNumbers(3);
 
-        Debug.Log("array size : " + Utility.numbers.Count);
         transform.localScale = Vector3.one;
         if (targetObject != null)
         {
             targetObject.SendMessage(targetMessage);
         }
 
-        GameObject.FindGameObjectWithTag("selectGrid").SetActive(false);
+        GameObject.FindGameObjectWithTag("selectGrid").transform.localScale = Utility.removeScale;
     }
 }

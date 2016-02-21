@@ -38,6 +38,7 @@ public class Grid24 : MonoBehaviour {
         Utility.offsetX = 2f;
         Utility.offsetY = 2.5f;
         Utility.startingPos = new Vector3(-3, 1, 0);
+        Utility.startingScale = new Vector3(1, 1, 1);
         Utility.totalCards = 8;
 
         Utility.numbers = Utility.GetNewNumbers(4);
@@ -47,6 +48,6 @@ public class Grid24 : MonoBehaviour {
         {
             targetObject.SendMessage(targetMessage);
         }
-        GameObject.FindGameObjectWithTag("selectGrid").SetActive(false);
+        GameObject.FindGameObjectWithTag("selectGrid").transform.localScale = Utility.removeScale;
     }
 }
