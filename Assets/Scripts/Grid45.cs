@@ -40,6 +40,11 @@ public class Grid45 : MonoBehaviour {
 
         Utility.gridRows = 4;
         Utility.gridCols = 5;
+        Utility.offsetX = 2f;
+        Utility.offsetY = 2.5f;
+
+        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3 , 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9};
+        Utility.numbers = numbers;
 
         transform.localScale = Vector3.one;
         if (targetObject != null)

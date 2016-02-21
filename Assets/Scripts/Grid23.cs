@@ -39,6 +39,11 @@ public class Grid23 : MonoBehaviour {
 
         Utility.gridRows = 2;
         Utility.gridCols = 3;
+        Utility.offsetX = 2f;
+        Utility.offsetY = 2.5f;
+
+        int[] numbers = { 0, 0, 1, 1, 2, 2};
+        Utility.numbers = numbers;
 
         transform.localScale = Vector3.one;
         if (targetObject != null)

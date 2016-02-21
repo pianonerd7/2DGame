@@ -35,13 +35,15 @@ public class SceneController : MonoBehaviour
     public void Instantiate()
     {
         GameObject.FindGameObjectWithTag("originalCard").transform.localScale = new Vector3(1, 1, 1);
-        Vector3 startPos = originalCard.transform.position;
+        //Vector3 startPos = originalCard.transform.position;
+        Vector3 startPos = new Vector3(-3, 1, 0);
 
         // create shuffled list of cards
-        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3 };
+        int[] numbers = Utility.numbers;
         numbers = ShuffleArray(numbers);
 
-        // place cards in a grid
+        int cardNum = 0;
+        // place cards in a grid 
         for (int i = 0; i < Utility.gridCols; i++)
         {
             for (int j = 0; j < Utility.gridRows; j++)
@@ -62,10 +64,13 @@ public class SceneController : MonoBehaviour
                 int index = j * Utility.gridCols + i;
                 int id = numbers[index];
                 card.SetCard(id, images[id]);
+                Debug.Log(id);
 
                 float posX = (Utility.offsetX * i) + startPos.x;
                 float posY = -(Utility.offsetY * j) + startPos.y;
                 card.transform.position = new Vector3(posX, posY, startPos.z);
+
+                cardNum++;
             }
         }
     }

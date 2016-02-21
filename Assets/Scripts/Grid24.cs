@@ -43,6 +43,9 @@ public class Grid24 : MonoBehaviour {
         Utility.offsetX = 2f;
         Utility.offsetY = 2.5f;
 
+        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3 };
+        Utility.numbers = numbers;
+
         transform.localScale = Vector3.one;
         if (targetObject != null)
         {
