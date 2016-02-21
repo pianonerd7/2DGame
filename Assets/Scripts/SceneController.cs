@@ -40,7 +40,7 @@ public class SceneController : MonoBehaviour
         Vector3 startPos = Utility.startingPos;
 
         // create shuffled list of cards
-        int[] numbers = Utility.numbers;
+        ArrayList numbers = Utility.numbers;
         numbers = ShuffleArray(numbers);
 
         int cardNum = 0;
@@ -63,14 +63,13 @@ public class SceneController : MonoBehaviour
 
                 // next card in the list for each grid space
                 int index = j * Utility.gridCols + i;
-                int id = numbers[index];
+                int id = (int) numbers[index];
                 card.SetCard(id, images[id]);
                 Debug.Log(id);
 
                 float posX = (Utility.offsetX * i) + startPos.x;
                 float posY = -(Utility.offsetY * j) + startPos.y;
                 card.transform.position = new Vector3(posX, posY, startPos.z);
-               
 
                 cardNum++;
             }
@@ -78,9 +77,9 @@ public class SceneController : MonoBehaviour
     }
 
     // Knuth shuffle algorithm
-    private int[] ShuffleArray(int[] numbers)
+    private ArrayList ShuffleArray(ArrayList numbers)
     {
-        int[] newArray = numbers.Clone() as int[];
+        int[] newArray = numbers.ToArray(typeof(int)) as int[];
         for (int i = 0; i < newArray.Length; i++)
         {
             int tmp = newArray[i];
@@ -88,7 +87,9 @@ public class SceneController : MonoBehaviour
             newArray[i] = newArray[r];
             newArray[r] = tmp;
         }
-        return newArray;
+        ArrayList rtnArr =  new ArrayList(newArray);
+
+        return rtnArr;
     }
 
     public void CardRevealed(MemoryCard card)

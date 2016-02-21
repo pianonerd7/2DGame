@@ -11,7 +11,6 @@ public class Grid23 : MonoBehaviour {
     public Color highlightColor = Color.blue;
     public void OnMouseEnter()
     {
-        Debug.Log("on mouse enter");
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         if (sprite != null)
         {
@@ -20,7 +19,6 @@ public class Grid23 : MonoBehaviour {
     }
     public void OnMouseExit()
     {
-        Debug.Log("on mouse exit");
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         if (sprite != null)
         {
@@ -30,13 +28,10 @@ public class Grid23 : MonoBehaviour {
 
     public void OnMouseDown()
     {
-        Debug.Log("on mouse down");
         transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
     }
     public void OnMouseUp()
     {
-        Debug.Log("on mouse up");
-
         Utility.gridRows = 2;
         Utility.gridCols = 3;
         Utility.offsetX = 3f;
@@ -44,9 +39,9 @@ public class Grid23 : MonoBehaviour {
         Utility.startingPos = new Vector3(-3, 1, 0);
         Utility.totalCards = 6;
 
-        int[] numbers = { 0, 0, 1, 1, 2, 2};
-        Utility.numbers = numbers;
+        Utility.numbers = Utility.GetNewNumbers(3);
 
+        Debug.Log("array size : " + Utility.numbers.Count);
         transform.localScale = Vector3.one;
         if (targetObject != null)
         {

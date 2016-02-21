@@ -12,7 +12,6 @@ public class Grid45 : MonoBehaviour {
     public Color highlightColor = Color.blue;
     public void OnMouseEnter()
     {
-        Debug.Log("on mouse enter");
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         if (sprite != null)
         {
@@ -21,7 +20,6 @@ public class Grid45 : MonoBehaviour {
     }
     public void OnMouseExit()
     {
-        Debug.Log("on mouse exit");
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
         if (sprite != null)
         {
@@ -31,22 +29,19 @@ public class Grid45 : MonoBehaviour {
 
     public void OnMouseDown()
     {
-        Debug.Log("on mouse down");
         transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
     }
     public void OnMouseUp()
     {
-        Debug.Log("on mouse up");
-
         Utility.gridRows = 4;
         Utility.gridCols = 5;
         Utility.offsetX = 2f;
-        Utility.offsetY = 2.5f;
-        Utility.startingPos = new Vector3(1, 1, 1);
+        Utility.offsetY = 1.6f;
+        Utility.startingPos = new Vector3(-4, 2, 0);
+        Utility.startingScale = new Vector3(0.75f, 0.75f, 0.75f);
         Utility.totalCards = 20;
 
-        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3 , 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9};
-        Utility.numbers = numbers;
+        Utility.numbers = Utility.GetNewNumbers(10);
 
         transform.localScale = Vector3.one;
         if (targetObject != null)
